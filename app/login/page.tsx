@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Loader2, Phone, User, MessageSquare, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react'
@@ -16,12 +17,24 @@ const loginSchema = z.object({
 
 export default function LoginPage() {
   const router = useRouter()
+  const token = useAuthStore((s) => s.token)
   const login = useAuthStore((s) => s.login)
 
   const [phone, setPhone] = useState('')
   const [name, setName] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [errors, setErrors] = useState<{ phone?: string; name?: string; general?: string }>({})
+
+  // Auto-redirect if already authenticated
+  useEffect(() => {
+    const activeToken = token || (typeof window !== 'undefined' ? localStorage.getItem('chat_token') : null)
+    if (activeToken) {
+      api.getMe()
+        .then(() => router.replace('/chat'))
+        .catch(() => {})
+    }
+  }, [token, router])
+
 
   const handleLogin = async (phoneVal: string, nameVal: string) => {
     setErrors({})

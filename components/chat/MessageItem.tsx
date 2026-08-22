@@ -71,11 +71,12 @@ export function MessageItem({ message, isMine, sender, isGroup, onRetry }: Messa
         className={cn(
           'relative max-w-[85%] sm:max-w-[72%] p-3.5 rounded-2xl shadow-sm text-xs leading-relaxed transition-colors',
           isMine
-            ? 'bg-blue-600 text-white rounded-tr-xs shadow-blue-500/15'
-            : 'bg-slate-100 text-slate-900 rounded-tl-xs border border-slate-200/70',
+            ? 'bg-[#6D9EEE] text-white rounded-tr-xs shadow-md shadow-[#6D9EEE]/20'
+            : 'bg-white text-slate-900 rounded-tl-xs border border-slate-200/80 shadow-sm',
           isSending && 'opacity-70',
           isError && 'bg-red-50 border border-red-200 text-red-700'
         )}
+
       >
         {/* Sender Name for group chat messages */}
         {isGroup && !isMine && (

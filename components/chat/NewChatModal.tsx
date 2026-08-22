@@ -18,6 +18,7 @@ interface NewChatModalProps {
 export function NewChatModal({ isOpen, onClose, onConversationStarted }: NewChatModalProps) {
   const currentUser = useAuthStore((s) => s.user)
   const conversations = useChatStore((s) => s.conversations)
+  const restoreConversation = useChatStore((s) => s.restoreConversation)
   const { showToast } = useToast()
 
   const [query, setQuery] = useState('')
@@ -65,7 +66,8 @@ export function NewChatModal({ isOpen, onClose, onConversationStarted }: NewChat
     )
 
     if (existingConv) {
-      showToast(`${user.name} is already in your chat list!`, 'success')
+      restoreConversation(existingConv._id)
+      showToast(`${user.name} is in your chat list!`, 'success')
       onConversationStarted(existingConv._id)
       handleClose()
       return
@@ -74,6 +76,7 @@ export function NewChatModal({ isOpen, onClose, onConversationStarted }: NewChat
     setIsStarting(user._id)
     try {
       const conv = await api.startDirectConversation(user._id)
+      restoreConversation(conv._id)
       showToast(`Started conversation with ${user.name}`, 'success')
       onConversationStarted(conv._id)
       handleClose()
@@ -83,6 +86,7 @@ export function NewChatModal({ isOpen, onClose, onConversationStarted }: NewChat
       setIsStarting(null)
     }
   }
+
 
   const handleClose = () => {
     onClose()

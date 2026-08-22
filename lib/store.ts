@@ -4,6 +4,28 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { User, Conversation, Message } from './types'
 
+// --- Auth Token Persistence Helpers ---
+
+export function getStoredToken(): string | null {
+  if (typeof window === 'undefined') return null
+  const localToken = localStorage.getItem('chat_token')
+  if (localToken) return localToken
+
+  const match = document.cookie.match(/(?:^|; )chat_token=([^;]*)/)
+  return match ? decodeURIComponent(match[1]) : null
+}
+
+export function setStoredToken(token: string | null) {
+  if (typeof window === 'undefined') return
+  if (token) {
+    localStorage.setItem('chat_token', token)
+    document.cookie = `chat_token=${encodeURIComponent(token)}; path=/; max-age=2592000; SameSite=Lax`
+  } else {
+    localStorage.removeItem('chat_token')
+    document.cookie = 'chat_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+  }
+}
+
 // --- Auth Store ---
 
 interface AuthState {
@@ -17,13 +39,13 @@ export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       user: null,
-      token: null,
+      token: getStoredToken(),
       login: (user, token) => {
-        localStorage.setItem('chat_token', token)
+        setStoredToken(token)
         set({ user, token })
       },
       logout: () => {
-        localStorage.removeItem('chat_token')
+        setStoredToken(null)
         set({ user: null, token: null })
       },
     }),
@@ -33,6 +55,7 @@ export const useAuthStore = create<AuthState>()(
     }
   )
 )
+
 
 // --- Chat Store ---
 
@@ -53,6 +76,7 @@ interface ChatState {
   setConversations: (conversations: Conversation[]) => void
   setActiveConversation: (id: string | null) => void
   markAsRead: (id: string) => void
+  restoreConversation: (conversationId: string) => void
   prependConversation: (conversation: Conversation) => void
   updateConversation: (conversation: Conversation) => void
   deleteConversation: (conversationId: string) => void
@@ -117,16 +141,19 @@ export const useChatStore = create<ChatState>()(
           readConversations: { ...state.readConversations, [id]: Date.now() },
         })),
 
+      restoreConversation: (conversationId) =>
+        set((state) => ({
+          deletedConversationIds: state.deletedConversationIds.filter((id) => id !== conversationId),
+        })),
+
       prependConversation: (conversation) =>
-        set((state) => {
-          if (state.deletedConversationIds.includes(conversation._id)) return state
-          return {
-            conversations: [
-              conversation,
-              ...state.conversations.filter((c) => c._id !== conversation._id),
-            ],
-          }
-        }),
+        set((state) => ({
+          deletedConversationIds: state.deletedConversationIds.filter((id) => id !== conversation._id),
+          conversations: [
+            conversation,
+            ...state.conversations.filter((c) => c._id !== conversation._id),
+          ],
+        })),
 
       updateConversation: (conversation) =>
         set((state) => {
@@ -137,6 +164,7 @@ export const useChatStore = create<ChatState>()(
             ),
           }
         }),
+
 
       deleteConversation: (conversationId) =>
         set((state) => ({

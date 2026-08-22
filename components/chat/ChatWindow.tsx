@@ -292,12 +292,13 @@ export function ChatWindow({ conversation, onBack, onConversationLeft }: ChatWin
         </div>
       </div>
 
-      {/* Message Feed Area */}
+      {/* Message Feed Area with #6D9EEE Background */}
       <div
         ref={scrollContainerRef}
-        className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 bg-white"
+        className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 bg-[#6D9EEE]/15 relative"
         id="message-list"
       >
+
         {convHasMore && (
           <div className="flex justify-center mb-4">
             <button
