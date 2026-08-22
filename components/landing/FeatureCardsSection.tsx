@@ -63,7 +63,7 @@ export function FeatureCardsSection() {
 
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
             Everything Built in <br />
-            NexusChat Engine
+            WhatChat Engine
           </h2>
           <p className="text-white/80 text-sm sm:text-base leading-relaxed">
             Real features designed and implemented for high performance, reliability, and smooth real-time communication.

@@ -57,7 +57,7 @@ export function LandingFooter() {
               <div className="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center">
                 <MessageSquare size={18} className="text-cyan-300 fill-cyan-300/30" />
               </div>
-              <span className="font-extrabold text-white text-xl tracking-tight">NexusChat</span>
+              <span className="font-extrabold text-white text-xl tracking-tight">WhatChat</span>
             </div>
             <p className="text-xs text-white/80 leading-relaxed max-w-sm">
               Instant 1-to-1 &amp; group messaging app with smart auto-scroll, draft persistence, and live Socket.io sync.
@@ -107,7 +107,7 @@ export function LandingFooter() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
-          <div>© 2026 NexusChat. All rights reserved.</div>
+          <div>© 2026 WhatChat. All rights reserved.</div>
           <div className="flex items-center gap-4">
             <a href="https://github.com" target="_blank" className="hover:text-white transition-colors" aria-label="Github"><Code size={16} /></a>
             <a href="https://twitter.com" target="_blank" className="hover:text-white transition-colors" aria-label="Web"><Globe size={16} /></a>

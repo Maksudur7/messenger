@@ -13,7 +13,6 @@ import {
   Zap,
   Activity,
   Plus,
-  Sparkles,
 } from 'lucide-react'
 import { Avatar } from '@/components/ui/Avatar'
 import { useAuthStore, useChatStore } from '@/lib/store'
@@ -57,8 +56,9 @@ export function HomeTab({ onNavigate, onNewChat }: HomeTabProps) {
 
           <div className="space-y-2.5 z-10 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white/15 border border-white/25 text-white text-xs font-black tracking-wide backdrop-blur-sm">
-              <Sparkles size={13} className="text-white" /> Workspace Overview
+              Workspace Overview
             </div>
+
             <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
               Welcome back, {currentUser?.name || 'User'}! 👋
             </h1>

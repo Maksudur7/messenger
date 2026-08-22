@@ -88,7 +88,7 @@ export default function LoginPage() {
               <MessageSquare size={20} className="text-white fill-white/20" />
             </div>
             <span className="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-1">
-              Nexus<span className="text-indigo-600">Chat</span>
+              What<span className="text-indigo-600">Chat</span>
             </span>
           </Link>
 
@@ -127,7 +127,7 @@ export default function LoginPage() {
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+1 555 019 2831"
                   autoFocus
-                  className={`w-full bg-slate-50 border rounded-2xl pl-10 pr-4 py-3 text-sm font-medium text-slate-900 placeholder:text-slate-400 outline-none transition-all ${
+                  className={`w-full bg-[#E8F0FC] border rounded-2xl pl-10 pr-4 py-3 text-sm font-medium text-slate-900 placeholder:text-slate-400 outline-none transition-all ${
                     errors.phone
                       ? 'border-red-400 focus:border-red-500 focus:bg-white'
                       : 'border-slate-200 focus:border-indigo-600 focus:bg-white focus:ring-4 focus:ring-indigo-500/10'
@@ -150,7 +150,7 @@ export default function LoginPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Alex Mercer"
-                  className={`w-full bg-slate-50 border rounded-2xl pl-10 pr-4 py-3 text-sm font-medium text-slate-900 placeholder:text-slate-400 outline-none transition-all ${
+                  className={`w-full bg-[#E8F0FC] border rounded-2xl pl-10 pr-4 py-3 text-sm font-medium text-slate-900 placeholder:text-slate-400 outline-none transition-all ${
                     errors.name
                       ? 'border-red-400 focus:border-red-500 focus:bg-white'
                       : 'border-slate-200 focus:border-indigo-600 focus:bg-white focus:ring-4 focus:ring-indigo-500/10'
@@ -219,7 +219,7 @@ export default function LoginPage() {
 
         {/* Footer Copyright */}
         <div className="text-center sm:text-left text-xs text-slate-400 pt-8 font-medium">
-          © 2026 NexusChat Inc. All rights reserved.
+          © 2026 WhatChat Inc. All rights reserved.
         </div>
 
       </div>
@@ -287,7 +287,7 @@ export default function LoginPage() {
               </div>
               <div className="text-xs font-black text-slate-700 flex items-center gap-1.5">
                 <MessageSquare size={14} className="text-indigo-600" />
-                <span>NexusChat Workspace</span>
+                <span>WhatChat Workspace</span>
               </div>
               <div className="w-10" />
             </div>

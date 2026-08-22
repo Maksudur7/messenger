@@ -58,32 +58,33 @@ export function Modal({
             onClick={onClose}
           />
 
-          {/* Modal panel */}
+          {/* Modal panel with #BCD3F7 background */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
             className={cn(
-              'relative w-full rounded-2xl border border-white/10 bg-[#12172a] shadow-2xl',
+              'relative w-full rounded-2xl border border-white/40 bg-[#BCD3F7] text-slate-900 shadow-2xl shadow-blue-600/20 overflow-hidden font-[\'DM_Sans\',sans-serif]',
               maxWidth,
               className
             )}
           >
             {/* Header */}
             {title && (
-              <div className="flex items-center justify-between p-5 border-b border-white/10">
-                <h2 className="text-lg font-semibold text-white">{title}</h2>
+              <div className="flex items-center justify-between p-5 border-b border-slate-400/20 bg-white/20">
+                <h2 className="text-lg font-black text-slate-900">{title}</h2>
                 <button
                   id="modal-close-btn"
                   onClick={onClose}
-                  className="p-1.5 rounded-lg text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+                  className="p-1.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-black/10 transition-colors"
                   aria-label="Close modal"
                 >
                   <X size={18} />
                 </button>
               </div>
             )}
+
 
             {/* Content */}
             <div className="p-5">{children}</div>

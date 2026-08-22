@@ -193,7 +193,7 @@ export function ChatSidebar({ onConversationSelect, activeId }: ChatSidebarProps
       <div className="p-3.5 border-b border-slate-100 space-y-2.5">
         <div className="flex items-center gap-2">
           {/* Search Input Box */}
-          <div className="relative flex-1 flex items-center bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 focus-within:border-blue-500 focus-within:bg-white transition-all">
+          <div className="relative flex-1 flex items-center bg-[#E8F0FC] border border-slate-200/80 rounded-xl px-3 py-2 focus-within:border-blue-500 transition-all">
             <Search size={15} className="text-slate-400 mr-2 flex-shrink-0" />
             <input
               id="conversation-search"

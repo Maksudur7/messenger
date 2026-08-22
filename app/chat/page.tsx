@@ -15,9 +15,12 @@ import { api } from '@/lib/api'
 import { useAuthStore, useChatStore } from '@/lib/store'
 import { getSocket, disconnectSocket, onMessageNew, onConversationUpdated } from '@/lib/socket'
 
+import { LayoutGrid, MessageSquare, Users, Bell, Calendar, Settings } from 'lucide-react'
+import { Avatar } from '@/components/ui/Avatar'
+
 export default function ChatPage() {
   const router = useRouter()
-  const { token, logout } = useAuthStore()
+  const { token, logout, user } = useAuthStore()
   const {
     conversations,
     activeConversationId,
@@ -33,6 +36,16 @@ export default function ChatPage() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(true)
   const [activeTab, setActiveTab] = useState<'chat' | 'home' | 'contact' | 'notifications' | 'calendar' | 'settings'>('chat')
   const [isNewChatOpen, setIsNewChatOpen] = useState(false)
+
+  const mobileNavItems = [
+    { id: 'home', icon: LayoutGrid, label: 'Home' },
+    { id: 'chat', icon: MessageSquare, label: 'Chat' },
+    { id: 'contact', icon: Users, label: 'Contacts' },
+    { id: 'notifications', icon: Bell, label: 'Notifications' },
+    { id: 'calendar', icon: Calendar, label: 'Calendar' },
+    { id: 'settings', icon: Settings, label: 'Settings' },
+  ]
+
 
   // Auth guard with stored token fallback
   useEffect(() => {
@@ -112,15 +125,50 @@ export default function ChatPage() {
       <div className="h-screen w-screen bg-slate-50 flex items-center justify-center font-['DM_Sans',sans-serif]">
         <div className="flex flex-col items-center gap-3 p-8 rounded-3xl bg-white shadow-2xl border border-slate-200/80">
           <div className="w-10 h-10 rounded-full border-3 border-blue-600/20 border-t-blue-600 animate-spin" />
-          <p className="text-slate-700 text-xs font-black tracking-wide">Connecting to NexusChat Engine...</p>
+          <p className="text-slate-700 text-xs font-black tracking-wide">Connecting to WhatChat Engine...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="h-screen w-screen bg-white font-['DM_Sans',sans-serif] text-slate-900 selection:bg-blue-600 selection:text-white flex overflow-hidden">
+    <div className="h-screen w-screen bg-white font-['DM_Sans',sans-serif] text-slate-900 selection:bg-blue-600 selection:text-white flex flex-col lg:flex-row overflow-hidden">
       
+      {/* Mobile Top Navigation Header (< 1024px) */}
+      <div className="lg:hidden flex items-center justify-between bg-white border-b border-slate-200/80 px-4 py-2.5 z-30 flex-shrink-0">
+        <div className="flex items-center gap-2">
+          <Avatar name={user?.name || 'User'} size="sm" className="ring-2 ring-blue-500/20" />
+          <span className="text-xs font-black text-slate-900 truncate max-w-[90px] sm:max-w-[140px]">
+            {user?.name || 'User'}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1">
+          {mobileNavItems.map((item) => {
+            const Icon = item.icon
+            const isActive = activeTab === item.id
+
+            return (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setActiveTab(item.id as typeof activeTab)
+                  if (item.id === 'chat') setIsMobileSidebarOpen(true)
+                }}
+                className={`p-2 rounded-xl text-xs font-extrabold transition-all ${
+                  isActive
+                    ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25 scale-105'
+                    : 'text-slate-500 hover:bg-slate-100'
+                }`}
+                title={item.label}
+              >
+                <Icon size={18} />
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
       {/* Panel 1: Far Left NavRail */}
       <div className="hidden lg:flex flex-shrink-0 h-full">
         <NavRail
@@ -128,6 +176,7 @@ export default function ChatPage() {
           onTabChange={(t) => setActiveTab(t as typeof activeTab)}
         />
       </div>
+
 
       {/* Main View Area Based on Active Tab */}
       {activeTab === 'home' && (

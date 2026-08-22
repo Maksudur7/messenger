@@ -52,7 +52,7 @@ export function ContactsTab({ onStartChat }: ContactsTabProps) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search by name or phone..."
-              className="w-full bg-white border border-[#6D9EEE]/30 rounded-xl pl-9 pr-4 py-2.5 text-xs font-bold text-slate-900 placeholder:text-slate-400 outline-none focus:border-blue-500 transition-all shadow-inner"
+              className="w-full bg-[#E8F0FC] border border-[#6D9EEE]/30 rounded-xl pl-9 pr-4 py-2.5 text-xs font-bold text-slate-900 placeholder:text-slate-400 outline-none focus:border-blue-500 transition-all shadow-inner"
             />
           </div>
         </div>

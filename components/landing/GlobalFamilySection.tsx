@@ -80,7 +80,7 @@ export function GlobalFamilySection() {
           </div>
 
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Whether you are coordinating distributed remote team projects or staying in touch with friends across the globe, NexusChat brings everyone together with instant sync and zero lag.
+            Whether you are coordinating distributed remote team projects or staying in touch with friends across the globe, WhatChat brings everyone together with instant sync and zero lag.
           </p>
 
           {/* 3 Mini Feature Highlights */}

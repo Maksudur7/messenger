@@ -124,7 +124,7 @@ export function NewGroupModal({ isOpen, onClose, onGroupCreated }: NewGroupModal
 
           {/* Search */}
           <div className="relative mb-4">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 z-10" />
             <input
               id="group-member-search"
               type="text"
@@ -132,24 +132,25 @@ export function NewGroupModal({ isOpen, onClose, onGroupCreated }: NewGroupModal
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search people to add..."
               autoFocus
-              className="w-full bg-white/5 border border-white/10 rounded-xl pl-9 pr-9 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-indigo-500/50 transition-colors"
+              className="w-full bg-[#E8F0FC] border border-slate-300 rounded-xl pl-9 pr-9 py-2.5 text-xs font-bold text-slate-900 placeholder:text-slate-500 outline-none focus:border-blue-600 transition-all shadow-inner"
             />
             {query && (
-              <button onClick={() => handleSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60">
+              <button onClick={() => handleSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-900 z-10">
                 <X size={14} />
               </button>
             )}
           </div>
 
+
           {/* Results */}
           <div className="max-h-52 overflow-y-auto -mx-5 px-5 mb-4">
             {isSearching && (
               <div className="flex justify-center py-6">
-                <Loader2 size={18} className="text-indigo-400 animate-spin" />
+                <Loader2 size={18} className="text-blue-600 animate-spin" />
               </div>
             )}
             {!isSearching && query && searchResults.length === 0 && (
-              <p className="text-sm text-white/30 text-center py-6">No users found</p>
+              <p className="text-sm text-slate-600 text-center py-6">No users found</p>
             )}
             {!isSearching && searchResults.map((user) => {
               const isSelected = !!selected.find((u) => u._id === user._id)
@@ -157,14 +158,14 @@ export function NewGroupModal({ isOpen, onClose, onGroupCreated }: NewGroupModal
                 <button
                   key={user._id}
                   onClick={() => toggleSelect(user)}
-                  className="w-full flex items-center gap-3 px-2 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left"
+                  className="w-full flex items-center gap-3 px-2 py-2.5 rounded-xl hover:bg-black/5 transition-colors text-left"
                 >
                   <Avatar name={user.name} size="md" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-white truncate">{user.name}</p>
-                    <p className="text-xs text-white/40 truncate">{user.phone}</p>
+                    <p className="text-sm font-bold text-slate-900 truncate">{user.name}</p>
+                    <p className="text-xs text-slate-600 truncate">{user.phone}</p>
                   </div>
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? 'bg-indigo-600 border-indigo-600' : 'border-white/20'}`}>
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? 'bg-blue-600 border-blue-600' : 'border-slate-400'}`}>
                     {isSelected && <Check size={11} className="text-white" />}
                   </div>
                 </button>
@@ -172,13 +173,13 @@ export function NewGroupModal({ isOpen, onClose, onGroupCreated }: NewGroupModal
             })}
           </div>
 
-          {error && <p className="text-xs text-red-400 mb-3">{error}</p>}
+          {error && <p className="text-xs text-red-600 font-bold mb-3">{error}</p>}
 
           <button
             id="group-next-btn"
             onClick={handleNext}
             disabled={selected.length < 2}
-            className="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:bg-white/10 disabled:text-white/30 text-white text-sm font-medium transition-colors"
+            className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:text-slate-500 text-white text-sm font-bold transition-colors shadow-md"
           >
             Next — {selected.length} selected {selected.length < 2 && '(min 2)'}
           </button>
@@ -188,16 +189,16 @@ export function NewGroupModal({ isOpen, onClose, onGroupCreated }: NewGroupModal
           {/* Selected members preview */}
           <div className="flex flex-wrap gap-1.5 mb-4">
             {selected.map((u) => (
-              <div key={u._id} className="flex items-center gap-1.5 bg-white/5 rounded-lg px-2.5 py-1">
+              <div key={u._id} className="flex items-center gap-1.5 bg-white/40 border border-slate-300/50 rounded-lg px-2.5 py-1">
                 <Avatar name={u.name} size="xs" />
-                <span className="text-xs text-white/70">{u.name}</span>
+                <span className="text-xs font-bold text-slate-900">{u.name}</span>
               </div>
             ))}
           </div>
 
           {/* Group name */}
           <div className="mb-5">
-            <label htmlFor="group-name-input" className="block text-xs text-white/50 mb-1.5 font-medium">
+            <label htmlFor="group-name-input" className="block text-xs text-slate-700 mb-1.5 font-bold">
               Group Name
             </label>
             <input
@@ -208,16 +209,17 @@ export function NewGroupModal({ isOpen, onClose, onGroupCreated }: NewGroupModal
               placeholder="e.g. Project Team, Family, Friends..."
               autoFocus
               maxLength={50}
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-indigo-500/50 transition-colors"
+              className="w-full bg-[#E8F0FC] border border-slate-300 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-900 placeholder:text-slate-500 outline-none focus:border-blue-600 transition-all shadow-inner"
             />
+
           </div>
 
-          {error && <p className="text-xs text-red-400 mb-3">{error}</p>}
+          {error && <p className="text-xs text-red-600 font-bold mb-3">{error}</p>}
 
           <div className="flex gap-3">
             <button
               onClick={() => { setStep(1); setError(null) }}
-              className="flex-1 py-2.5 rounded-xl border border-white/10 text-white/60 hover:text-white hover:border-white/20 text-sm transition-colors"
+              className="flex-1 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-black/5 text-sm font-bold transition-colors"
             >
               Back
             </button>
@@ -225,7 +227,7 @@ export function NewGroupModal({ isOpen, onClose, onGroupCreated }: NewGroupModal
               id="create-group-btn"
               onClick={handleCreate}
               disabled={isCreating || !groupName.trim()}
-              className="flex-1 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:bg-white/10 disabled:text-white/30 text-white text-sm font-medium transition-colors flex items-center justify-center gap-2"
+              className="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:text-slate-500 text-white text-sm font-bold transition-colors flex items-center justify-center gap-2 shadow-md"
             >
               {isCreating ? (
                 <><Loader2 size={14} className="animate-spin" /> Creating...</>

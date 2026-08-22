@@ -89,8 +89,8 @@ export function MessageInput({ conversationId, onSend, disabled }: MessageInputP
         </button>
       </div>
 
-      {/* Message Input Box (Matching Dribbble Reference: Type a message here) */}
-      <div className="flex-1 bg-slate-50 border border-slate-200/80 rounded-2xl px-4 py-2 flex items-center min-h-[44px] max-h-[120px] focus-within:bg-white focus-within:border-blue-500 transition-all">
+      {/* Message Input Box with #E8F0FC Background */}
+      <div className="flex-1 bg-[#E8F0FC] border border-[#BCD3F7] rounded-2xl px-4 py-2 flex items-center min-h-[44px] max-h-[120px] focus-within:bg-[#E8F0FC] focus-within:border-blue-600 transition-all shadow-inner">
         <textarea
           id="message-input"
           ref={textareaRef}
@@ -101,11 +101,12 @@ export function MessageInput({ conversationId, onSend, disabled }: MessageInputP
           disabled={disabled || isSending}
           rows={1}
           className={cn(
-            'w-full bg-transparent text-slate-900 placeholder:text-slate-400 text-xs font-medium resize-none outline-none leading-relaxed py-0 overflow-y-auto',
+            'w-full bg-transparent text-slate-900 placeholder:text-slate-700 text-xs font-bold resize-none outline-none leading-relaxed py-0 overflow-y-auto',
             (disabled || isSending) && 'opacity-50 cursor-not-allowed'
           )}
           aria-label="Message input"
         />
+
 
         <button
           onClick={() => showToast('Emoji picker opening...')}

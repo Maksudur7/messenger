@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Users,
   Plus,
-  Sparkles,
   MessageSquareDashed,
 } from 'lucide-react'
 
@@ -44,8 +43,9 @@ export function EmptyState({ type, message, onAction, actionLabel }: EmptyStateP
           {/* Title & Subtitle */}
           <div className="space-y-2 mb-6">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#6D9EEE]/15 text-blue-700 text-[11px] font-black tracking-wide border border-[#6D9EEE]/30">
-              <Sparkles size={12} className="text-blue-600" /> NexusChat Workspace Engine
+              WhatChat Workspace Engine
             </div>
+
             <h2 className="text-2xl font-black text-slate-900 tracking-tight">
               Select or Start a Conversation
             </h2>

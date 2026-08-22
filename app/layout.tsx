@@ -12,10 +12,10 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: 'NexusChat — Real-Time Chat App',
-    template: '%s | NexusChat',
+    default: 'WhatChat — Real-Time Chat App',
+    template: '%s | WhatChat',
   },
-  description: 'NexusChat is a real-time chat application supporting 1-to-1 and group conversations, built with Next.js, Socket.io, and a modern dark UI.',
+  description: 'WhatChat is a real-time chat application supporting 1-to-1 and group conversations, built with Next.js, Socket.io, and a modern dark UI.',
   keywords: ['chat', 'real-time', 'messaging', 'group chat', 'Socket.io', 'Next.js'],
 }
 

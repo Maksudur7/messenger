@@ -123,12 +123,12 @@ export function GroupInfoPanel({ conversation, isOpen, onClose, onLeft }: GroupI
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="absolute right-0 top-0 bottom-0 w-80 bg-[#0e1526] border-l border-white/10 z-20 flex flex-col overflow-hidden"
+            className="absolute right-0 top-0 bottom-0 w-80 bg-[#6D9EEE] border-l border-white/20 z-20 flex flex-col overflow-hidden text-white font-['DM_Sans',sans-serif] shadow-2xl shadow-blue-600/40"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
-              <h3 className="font-semibold text-white">Group Info</h3>
-              <button onClick={onClose} className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors">
+            <div className="flex items-center justify-between px-4 py-4 border-b border-white/20 bg-white/5">
+              <h3 className="font-black text-white">Group Info</h3>
+              <button onClick={onClose} className="p-1.5 rounded-lg text-white/80 hover:text-white hover:bg-white/20 transition-colors">
                 <X size={16} />
               </button>
             </div>
@@ -136,48 +136,49 @@ export function GroupInfoPanel({ conversation, isOpen, onClose, onLeft }: GroupI
             <div className="flex-1 overflow-y-auto p-4 space-y-5">
               {/* Group name */}
               <div className="flex flex-col items-center gap-3 py-2">
-                <Avatar name={conversation.name} size="lg" />
+                <Avatar name={conversation.name} size="lg" className="ring-4 ring-white/30" />
                 {isRenaming ? (
                   <div className="flex items-center gap-2 w-full">
                     <input
                       value={newName}
                       onChange={(e) => setNewName(e.target.value)}
-                      className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-white outline-none focus:border-indigo-500/50"
+                      className="flex-1 bg-[#E8F0FC] border border-white/30 rounded-lg px-3 py-1.5 text-xs font-bold text-slate-900 outline-none focus:border-white shadow-inner"
                       onKeyDown={(e) => e.key === 'Enter' && handleRename()}
                       autoFocus
                     />
-                    <button onClick={handleRename} disabled={loadingAction === 'rename'} className="p-1.5 bg-indigo-600 rounded-lg text-white">
-                      {loadingAction === 'rename' ? <Loader2 size={14} className="animate-spin" /> : <Check size={14} />}
+                    <button onClick={handleRename} disabled={loadingAction === 'rename'} className="p-1.5 bg-white text-blue-700 rounded-lg font-black">
+                      {loadingAction === 'rename' ? <Loader2 size={14} className="animate-spin text-blue-700" /> : <Check size={14} />}
                     </button>
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <p className="text-base font-semibold text-white">{conversation.name}</p>
+                    <p className="text-base font-black text-white">{conversation.name}</p>
                     {isAdmin && (
-                      <button onClick={() => { setIsRenaming(true); setNewName(conversation.name) }} className="text-white/30 hover:text-white/70 transition-colors">
+                      <button onClick={() => { setIsRenaming(true); setNewName(conversation.name) }} className="text-white/70 hover:text-white transition-colors">
                         <Edit2 size={13} />
                       </button>
                     )}
                   </div>
                 )}
-                <p className="text-xs text-white/40">{conversation.participants.length} members</p>
+                <p className="text-xs text-white/80 font-bold">{conversation.participants.length} members</p>
               </div>
 
               {/* Add members (admin only) */}
               {isAdmin && (
                 <div>
-                  <p className="text-xs text-white/40 font-medium mb-2 uppercase tracking-wide">Add Members</p>
+                  <p className="text-xs text-white/80 font-black mb-2 uppercase tracking-wide">Add Members</p>
                   <div className="relative">
-                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
+                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-600 z-10" />
                     <input
                       type="text"
                       value={searchQuery}
                       onChange={(e) => handleSearch(e.target.value)}
                       placeholder="Search users..."
-                      className="w-full bg-white/5 border border-white/10 rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-white/30 outline-none focus:border-indigo-500/50"
+                      className="w-full bg-[#E8F0FC] border border-white/30 rounded-lg pl-8 pr-3 py-2 text-xs font-bold text-slate-900 placeholder:text-slate-600 outline-none focus:border-white shadow-inner"
                     />
                   </div>
-                  {isSearching && <div className="flex justify-center py-3"><Loader2 size={14} className="text-indigo-400 animate-spin" /></div>}
+                  {isSearching && <div className="flex justify-center py-3"><Loader2 size={14} className="text-white animate-spin" /></div>}
+
                   {searchResults.map((user) => (
                     <button key={user._id} onClick={() => handleAddMember(user)} disabled={!!loadingAction} className="w-full flex items-center gap-2 py-2 px-1 rounded-lg hover:bg-white/5 transition-colors text-left mt-1">
                       <Avatar name={user.name} size="sm" />

@@ -8,7 +8,7 @@ import { FAQSection } from '@/components/landing/FAQSection'
 import { CTASection, LandingFooter } from '@/components/landing/CTASection'
 
 export const metadata: Metadata = {
-  title: 'NexusChat — Your Next Conversation Starts Here',
+  title: 'WhatChat — Your Next Conversation Starts Here',
   description: 'A clean real-time messaging application that connects your team, 1-to-1 chats, group rooms, and instant sync.',
 }
 

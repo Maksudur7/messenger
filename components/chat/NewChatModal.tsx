@@ -97,7 +97,7 @@ export function NewChatModal({ isOpen, onClose, onConversationStarted }: NewChat
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} title="Add Contact / Start Chat" maxWidth="max-w-sm">
-      <p className="text-xs text-white/40 mb-3 -mt-2">
+      <p className="text-xs text-slate-700 font-medium mb-3 -mt-2">
         Search any user by phone number or name to add them to your messages.
       </p>
 
@@ -105,7 +105,7 @@ export function NewChatModal({ isOpen, onClose, onConversationStarted }: NewChat
       <div className="relative mb-4">
         <Search
           size={16}
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 z-10"
         />
         <input
           id="new-chat-search"
@@ -114,36 +114,37 @@ export function NewChatModal({ isOpen, onClose, onConversationStarted }: NewChat
           onChange={(e) => handleSearch(e.target.value)}
           placeholder="Search by name or phone number..."
           autoFocus
-          className="w-full bg-white/5 border border-white/10 rounded-xl pl-9 pr-9 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-indigo-500/50 transition-colors"
+          className="w-full bg-[#E8F0FC] border border-slate-300 rounded-xl pl-9 pr-9 py-2.5 text-xs font-bold text-slate-900 placeholder:text-slate-500 outline-none focus:border-blue-600 transition-all shadow-inner"
         />
         {query && (
           <button
             onClick={() => handleSearch('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-900 z-10"
             aria-label="Clear search"
           >
             <X size={14} />
           </button>
         )}
+
       </div>
 
       {/* Results */}
       <div className="max-h-64 overflow-y-auto -mx-5 px-5">
         {isSearching && (
           <div className="flex items-center justify-center py-8">
-            <Loader2 size={20} className="text-indigo-400 animate-spin" />
+            <Loader2 size={20} className="text-blue-600 animate-spin" />
           </div>
         )}
 
         {searchError && (
-          <p className="text-sm text-red-400 text-center py-4">{searchError}</p>
+          <p className="text-sm text-red-600 text-center py-4">{searchError}</p>
         )}
 
         {!isSearching && !searchError && query && results.length === 0 && (
           <div className="text-center py-8">
-            <UserPlus size={32} className="text-white/10 mx-auto mb-2" />
-            <p className="text-sm text-white/40 font-medium">No user found</p>
-            <p className="text-xs text-white/20 mt-1">Check the phone number or name and try again.</p>
+            <UserPlus size={32} className="text-slate-400 mx-auto mb-2" />
+            <p className="text-sm text-slate-700 font-medium">No user found</p>
+            <p className="text-xs text-slate-500 mt-1">Check the phone number or name and try again.</p>
           </div>
         )}
 
@@ -157,27 +158,27 @@ export function NewChatModal({ isOpen, onClose, onConversationStarted }: NewChat
               key={user._id}
               onClick={() => handleSelectContact(user)}
               disabled={isStarting === user._id}
-              className="w-full flex items-center gap-3 px-2 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left disabled:opacity-60 group"
+              className="w-full flex items-center gap-3 px-2 py-2.5 rounded-xl hover:bg-black/5 transition-colors text-left disabled:opacity-60 group"
             >
               <Avatar name={user.name} size="md" />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="text-sm font-medium text-white truncate">{user.name}</p>
+                  <p className="text-sm font-bold text-slate-900 truncate">{user.name}</p>
                   {isAlreadyAdded && (
-                    <span className="text-[10px] font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded flex items-center gap-0.5 flex-shrink-0">
+                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-300 px-1.5 py-0.5 rounded flex items-center gap-0.5 flex-shrink-0">
                       <Check size={9} /> Added
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-white/40 truncate">{user.phone}</p>
+                <p className="text-xs text-slate-600 truncate">{user.phone}</p>
               </div>
 
               {isStarting === user._id ? (
-                <Loader2 size={16} className="text-indigo-400 animate-spin flex-shrink-0" />
+                <Loader2 size={16} className="text-blue-600 animate-spin flex-shrink-0" />
               ) : isAlreadyAdded ? (
-                <span className="text-xs text-white/30 group-hover:text-white/60 transition-colors flex-shrink-0">Open</span>
+                <span className="text-xs text-slate-600 group-hover:text-slate-900 transition-colors flex-shrink-0 font-bold">Open</span>
               ) : (
-                <span className="text-xs text-indigo-400 group-hover:text-indigo-300 font-medium transition-colors flex-shrink-0">+ Add</span>
+                <span className="text-xs text-blue-700 group-hover:text-blue-800 font-black transition-colors flex-shrink-0">+ Add</span>
               )}
             </button>
           )
@@ -185,9 +186,9 @@ export function NewChatModal({ isOpen, onClose, onConversationStarted }: NewChat
 
         {!query && (
           <div className="text-center py-8">
-            <UserPlus size={32} className="text-white/10 mx-auto mb-2" />
-            <p className="text-sm text-white/40 font-medium">Add a Contact</p>
-            <p className="text-xs text-white/20 mt-1">Type a name or phone number above to start a message.</p>
+            <UserPlus size={32} className="text-slate-400 mx-auto mb-2" />
+            <p className="text-sm text-slate-700 font-bold">Add a Contact</p>
+            <p className="text-xs text-slate-500 mt-1">Type a name or phone number above to start a message.</p>
           </div>
         )}
       </div>

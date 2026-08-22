@@ -72,7 +72,7 @@ export function SettingsTab() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full bg-white border border-[#6D9EEE]/30 rounded-xl px-3.5 py-2.5 text-xs font-bold text-slate-900 outline-none focus:border-blue-500 transition-all shadow-inner"
+                className="w-full bg-[#E8F0FC] border border-[#6D9EEE]/30 rounded-xl px-3.5 py-2.5 text-xs font-bold text-slate-900 outline-none focus:border-blue-500 transition-all shadow-inner"
               />
             </div>
 

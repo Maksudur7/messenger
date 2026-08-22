@@ -116,8 +116,9 @@ export function HeroSection() {
               x: { duration: 0.6, delay: 0.3 },
               y: { duration: 4, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' },
             }}
-            className="absolute top-2 left-0 sm:left-4 z-30 p-3 sm:p-3.5 rounded-2xl bg-[#3b82f6]/90 backdrop-blur-md border border-white/20 text-white shadow-2xl flex items-center gap-3 w-64 sm:w-72 hover:shadow-blue-400/20 hover:scale-105 transition-all cursor-pointer"
+            className="hidden sm:flex absolute top-2 left-0 sm:left-4 z-30 p-3 sm:p-3.5 rounded-2xl bg-[#3b82f6]/90 backdrop-blur-md border border-white/20 text-white shadow-2xl items-center gap-3 w-64 sm:w-72 hover:shadow-blue-400/20 hover:scale-105 transition-all cursor-pointer"
           >
+
             <button
               onClick={() => setIsPlaying(!isPlaying)}
               className="w-8 h-8 rounded-full bg-white text-blue-600 flex items-center justify-center font-bold flex-shrink-0 shadow active:scale-95 transition-transform"
@@ -166,8 +167,9 @@ export function HeroSection() {
               x: { duration: 0.6, delay: 0.4 },
               y: { duration: 5, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.5 },
             }}
-            className="absolute top-28 left-2 sm:-left-6 z-30 p-1.5 rounded-2xl bg-white shadow-2xl border-4 border-pink-200 w-44 sm:w-56 hover:scale-105 transition-transform"
+            className="hidden md:block absolute top-28 left-2 sm:-left-6 z-30 p-1.5 rounded-2xl bg-white shadow-2xl border-4 border-pink-200 w-44 sm:w-56 hover:scale-105 transition-transform"
           >
+
             <div className="rounded-xl overflow-hidden h-32 sm:h-40">
               <img
                 src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&h=300&auto=format&fit=crop&q=80"

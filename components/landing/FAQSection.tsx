@@ -7,7 +7,7 @@ import { ChevronDown } from 'lucide-react'
 const FAQS = [
   {
     id: 1,
-    q: 'How does real-time messaging work in NexusChat?',
+    q: 'How does real-time messaging work in WhatChat?',
     a: 'Messaging is driven by a custom WebSocket engine that handles instant 1-to-1 direct messages and group room broadcasts with live delivery checkmarks (✓✓) and unread message counters.',
   },
   {
@@ -18,7 +18,7 @@ const FAQS = [
   {
     id: 3,
     q: 'Are unsent message drafts automatically saved?',
-    a: 'Yes! NexusChat implements LocalStorage Draft Persistence. If you type a message and switch contacts or reload the browser, your unsent draft is restored automatically when you return.',
+    a: 'Yes! WhatChat implements LocalStorage Draft Persistence. If you type a message and switch contacts or reload the browser, your unsent draft is restored automatically when you return.',
   },
   {
     id: 4,
@@ -27,7 +27,7 @@ const FAQS = [
   },
   {
     id: 5,
-    q: 'Does NexusChat support cross-device responsiveness?',
+    q: 'Does WhatChat support cross-device responsiveness?',
     a: 'Yes, the user interface is built with Tailwind CSS and Next.js 16, offering seamless responsive layouts across smartphones, tablets, laptops, and desktop displays.',
   },
 ]
@@ -55,7 +55,7 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="text-slate-500 text-sm sm:text-base">
-            Technical and functional details about how NexusChat real-time engine works.
+            Technical and functional details about how WhatChat real-time engine works.
           </p>
         </motion.div>
 
@@ -102,7 +102,7 @@ export function FAQSection() {
 
         {/* Footer Support Link */}
         <div className="text-center text-xs text-slate-500 pt-4">
-          Want to test real messaging? Launch the <a href="/chat" className="font-bold text-blue-600 hover:underline">NexusChat App</a> right now.
+          Want to test real messaging? Launch the <a href="/chat" className="font-bold text-blue-600 hover:underline">WhatChat App</a> right now.
         </div>
 
       </div>

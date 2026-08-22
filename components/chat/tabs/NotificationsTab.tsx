@@ -12,7 +12,7 @@ export function NotificationsTab() {
   const [notifications, setNotifications] = useState([
     {
       id: '1',
-      title: 'Welcome to NexusChat Engine',
+      title: 'Welcome to WhatChat Engine',
       message: `Your account (${currentUser?.phone}) is registered and secured with WebSocket real-time messaging.`,
       time: 'Just now',
       type: 'system',

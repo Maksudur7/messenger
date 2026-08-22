@@ -26,7 +26,7 @@ export function LandingNavbar() {
               <MessageSquare size={18} className="text-cyan-300 fill-cyan-300/30" />
             </div>
             <span className="font-extrabold text-white text-xl tracking-tight">
-              Nexus<span className="text-cyan-300">Chat</span>
+              What<span className="text-cyan-300">Chat</span>
             </span>
           </Link>
 
