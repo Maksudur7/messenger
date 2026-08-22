@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   },
   description: 'WhatChat is a real-time chat application supporting 1-to-1 and group conversations, built with Next.js, Socket.io, and a modern dark UI.',
   keywords: ['chat', 'real-time', 'messaging', 'group chat', 'Socket.io', 'Next.js'],
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 }
 
 export default function RootLayout({

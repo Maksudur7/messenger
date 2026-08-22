@@ -32,10 +32,11 @@ export function LandingNavbar() {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
-            <a href="#overview" className="hover:text-white transition-colors">Overview</a>
-            <a href="#features" className="hover:text-white transition-colors">Features</a>
-            <a href="#integrations" className="hover:text-white transition-colors">Integrations</a>
-            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+            <Link href="/" className="hover:text-white transition-colors">Overview</Link>
+            <Link href="/#features" className="hover:text-white transition-colors">Features</Link>
+            <Link href="/api-docs" className="text-cyan-300 font-bold hover:text-white transition-colors">API Docs</Link>
+            <Link href="/#integrations" className="hover:text-white transition-colors">Integrations</Link>
+            <Link href="/#faq" className="hover:text-white transition-colors">FAQ</Link>
           </nav>
 
 
@@ -79,10 +80,12 @@ export function LandingNavbar() {
               className="md:hidden pt-4 pb-2 border-t border-white/10 mt-3"
             >
               <nav className="flex flex-col gap-3">
-                <a href="#overview" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/80 hover:text-white py-1">Overview</a>
-                <a href="#features" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/80 hover:text-white py-1">Features</a>
-                <a href="#integrations" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/80 hover:text-white py-1">Integrations</a>
-                <a href="#faq" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/80 hover:text-white py-1">FAQ</a>
+                <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/80 hover:text-white py-1">Home</Link>
+                <Link href="/#overview" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/80 hover:text-white py-1">Overview</Link>
+                <Link href="/#features" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/80 hover:text-white py-1">Features</Link>
+                <Link href="/api-docs" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-cyan-300 font-bold hover:text-white py-1">API Docs</Link>
+                <Link href="/#integrations" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/80 hover:text-white py-1">Integrations</Link>
+                <Link href="/#faq" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/80 hover:text-white py-1">FAQ</Link>
 
                 <div className="flex flex-col gap-2 pt-2">
                   <Link href="/login" className="py-2 rounded-xl bg-white/10 text-white text-xs font-semibold text-center">
@@ -100,5 +103,3 @@ export function LandingNavbar() {
     </header>
   )
 }
-
-

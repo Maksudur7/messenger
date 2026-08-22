@@ -68,9 +68,9 @@ export function LandingFooter() {
           <div className="col-span-1 md:col-span-2 space-y-3">
             <div className="text-xs font-black uppercase text-cyan-300 tracking-wider">PRODUCTS</div>
             <ul className="space-y-2 text-xs text-white/80 font-medium">
-              <li><a href="#overview" className="hover:text-white transition-colors">Direct Messaging</a></li>
-              <li><a href="#features" className="hover:text-white transition-colors">Group Channels</a></li>
-              <li><a href="#integrations" className="hover:text-white transition-colors">Integrations</a></li>
+              <li><Link href="/#overview" className="hover:text-white transition-colors">Direct Messaging</Link></li>
+              <li><Link href="/#features" className="hover:text-white transition-colors">Group Channels</Link></li>
+              <li><Link href="/#integrations" className="hover:text-white transition-colors">Integrations</Link></li>
             </ul>
 
           </div>
@@ -79,10 +79,10 @@ export function LandingFooter() {
           <div className="col-span-1 md:col-span-2 space-y-3">
             <div className="text-xs font-black uppercase text-cyan-300 tracking-wider">RESOURCES</div>
             <ul className="space-y-2 text-xs text-white/80 font-medium">
-              <li><a href="/docs/API_DOCUMENTATION.md" target="_blank" className="hover:text-white transition-colors">API Documentation</a></li>
-              <li><a href="#faq" className="hover:text-white transition-colors">Help &amp; FAQ</a></li>
-              <li><a href="/chat" className="hover:text-white transition-colors">Live Web App</a></li>
-              <li><a href="/login" className="hover:text-white transition-colors">Account Auth</a></li>
+              <li><Link href="/api-docs" className="hover:text-white transition-colors">API Documentation</Link></li>
+              <li><Link href="/#faq" className="hover:text-white transition-colors">Help &amp; FAQ</Link></li>
+              <li><Link href="/chat" className="hover:text-white transition-colors">Live Web App</Link></li>
+              <li><Link href="/login" className="hover:text-white transition-colors">Account Auth</Link></li>
             </ul>
           </div>
 
